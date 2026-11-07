@@ -288,9 +288,61 @@ While the heavier radial-IPM **`ME1616` (`24 kg` / `53 lb`)** wins inside a yach
 
 * **Dinghy Conversion BOM (`~$2,650` complete incl. `5.12 kWh` battery, vs. `$6,500–$9,000` for a `Torqeedo Cruise 6.0` / `ePropulsion Navy 6.0`):**
   * `1 × Motenergy ME1304` liquid-cooled axial-flux PMSM (`$965`)
-  * `1 × Sevcon Gen4 Size 4 (48V, 350A)` or ` Curtis 1236SE-5421` mounted on a water-cooled aluminum baseplate (`$750`)
+  * `1 × Sevcon Gen4 Size 4 (48V, 350A)` or `Curtis 1236SE-5421` mounted on a water-cooled aluminum baseplate (`$750`)
   * Donor `Mercury / Tohatsu 6–9.9 HP` outboard lower leg + CNC `6061-T6` powerhead adapter plate + splined shaft coupler (`$350`)
   * Waterproof `IP67` `Pelican`-style `48 V 100 Ah` (`5.12 kWh`) `LiFePO4` battery box (`16S EVE LF105` + `200 A JK BMS` + `Anderson SB175` quick-disconnect, `$585`)
+
+---
+
+### F. Option: Tall-Shaft (`20"`–`25"`) `ME1304` Outboard + Externally Mounted Hydrofoil Set (`True Kit 10 ft` Foiling Catamaran)
+
+While planing at `15.5 knots` on the inflatable sponsons draws **`7.91 kW` (`510 Wh/nm`, `10.0 nm` range)**, lifting the `True Kit 10 ft` catamaran **`150–200 mm` (`6"–8"`) clear of the water on an externally mounted hydrofoil set** cuts hydrodynamic drag at `15.5 knots` by **`75%`** (from `185 lbf` down to **`46 lbf`**)—dropping battery draw to **`2.62 kW` (`169 Wh/nm`)** and **tripling high-speed range on the `5.12 kWh` battery from `10.0 nm` to `30.3 nm`!**
+
+#### 1. Why a Tall (`20"` Long / `25"` Extra-Long) Outboard Shaft is Mandatory for Foiling
+* A standard `15"` (`381 mm`) short-shaft outboard places the propeller just `25–50 mm` below the bottom of the inflatable tubes. The moment the hull rises onto hydrofoils, a `15"` prop ventilates in air.
+* **The Tall-Shaft Solution:** Build the `ME1304 @ 48 V` powerhead onto a **`20"` (`508 mm` Long) or `25"` (`635 mm` SailPower Extra-Long) donor lower leg** mounted on a **vertical sliding/kick-up transom jack plate**:
+  * **Foiling Mode (Down):** Submerges the propeller and rear stabilizer T-foil **`220–300 mm` (`9"–12"`) below the bottom of the inflatable tubes**, allowing **`150–220 mm` (`6"–9"`) of clean air gap** beneath the sponsons so harbor chop passes underneath without slapping.
+  * **Shallow / Beach-Landing Mode (Up):** Slides/tilts up so the `True Kit` retains its signature `6"` beaching draft.
+
+#### 2. External Clamp-On Exoskeleton & Flip-Up Hydrofoil Architecture (Zero Structural Stress on Fabric Seams)
+Because a soft inflatable catamaran cannot absorb concentrated hydrofoil bending moments through glued PVC/Valmex seams alone, the hydrofoil system mounts to a **rigid, quick-detach external `6061-T6` aluminum / carbon exoskeleton**:
+
+```mermaid
+flowchart TD
+    Saddle["1. Forward Athwartships Saddle Beam (6061-T6 / Carbon Box Beam Clamped to Gunwale Tracks + Contoured Tube Saddles)"]
+    Spine["2. Twin Longitudinal Torque Tie-Bars (Connect Forward Saddle Beam Directly to Rigid Transom Plate)"]
+    FwdFoil["3. External Flip-Up Forward Main Foils (68% Lift, 1,600 cm² Total Area, Pivots 180° Up Outside Tubes for Beaching)"]
+    AftFoil["4. Tall-Shaft (20–25 in) Outboard Cavitation-Plate Stabilizer T-Foil (32% Lift, 650 cm² Area, Controls Pitch Trim)"]
+
+    Saddle --> Spine
+    Saddle --> FwdFoil
+    Spine --> AftFoil
+```
+
+* **Forward Main Foil Options (`68%` of Weight, Positioned `100–150 mm` Ahead of Loaded `LCG`):**
+  * **Option 1 — Self-Stabilizing Surface-Piercing Dihedral `V-Foils` (`32°` Dihedral, Zero Moving Parts):** Two external carbon/aluminum struts drop down outside the port and starboard tubes and angle inward at `32°`. As the boat rises higher, more of the foil exits the water, passively reducing submerged area ($S_{\text{wet}}(h)$) until lift equals weight ($L = W$). Inherently stable in roll, pitch, and ride height with zero sensors or flaps.
+  * **Option 2 — High-Aspect Submerged Carbon `T-Foils` (`AR = 7.6`, `1,600 cm²` / `0.16 m²`, `Eppler 817` section) with Bow Surface-Skimming Wands:** Twin mechanical bow wands (`Moth`-style) modulate trailing-edge flaps on the port and starboard T-foils, achieving a higher lift-to-drag ratio ($L/D \approx 12\text{–}15$) and smoother ride over steep wakes.
+* **Aft Stabilizer Foil (`32%` of Weight, `650 cm²` / `0.065 m²`):**
+  * Bolts directly to the reinforced anti-ventilation plate of the **tall `20"–25"` outboard lower unit** just above the propeller (`9" × 12"` high-pitch 3-blade stainless prop for `12–23 kn` foiling).
+* **10-Second Flip-Up Beaching:** Both external port and starboard foil struts lock into spring-loaded over-center detents on the cross-beam ends and **flip `180°` straight up alongside the tubes** (just like `True Kit`'s flip-up beach wheels) when approaching a beach or yacht davits.
+
+#### 3. Foiling `True Kit 10 ft` (`Tall ME1304 @ 48 V` + External Hydrofoils) — Pushing Force vs. Energy Consumption
+*(All-up flying mass `235 kg` / `518 lb` [`1–2 crew + 36 kg 5.12 kWh pack + 26 kg tall outboard + 14 kg foil kit`]; takeoff speed **`9.7–10.2 knots`**)*
+
+| Operating Regime (`235 kg` / `518 lb` Flying Weight) | Speed (`knots` / `mph`) | **Hydrodynamic Drag / Required Thrust** | Shaft Power (`HP`) | **Battery Power Draw (`DC kW` & `Amps @ 51.2 V`)** | **Energy per Mile (`Wh/nm`)** | **Runtime & Range (`5.12 kWh` Pack)** | Comparison vs. Non-Foiling Catamaran |
+| :--- | :---: | :--- | :---: | :--- | :---: | :---: | :--- |
+| **1. Displacement Harbor (Foils Down)** | **`3.0 kn`** (`3.5 mph`) | **`28 lbf`** (`13 kgf` / `125 N`) | `0.28 kW` (`0.4 HP`) | **`0.33 kW`** (`6.4 A`) | **`110 Wh/nm`** | **`15.5 hrs` (`46.5 nm`)** | Slight extra wetted-area drag at `3 kn` (flip foils up for `85 Wh/nm`) |
+| **2. Pre-Takeoff Catamaran Glide** | **`6.5 kn`** (`7.5 mph`) | **`85 lbf`** (`39 kgf` / `378 N`) | `1.60 kW` (`2.1 HP`) | **`1.86 kW`** (`36.3 A`) | **`286 Wh/nm`** | **`2.8 hrs` (`17.9 nm`)** | Foils generate `~40%` lift, unweighting sponsons |
+| **3. Foil Take-Off Transition (`3-sec` Hump)** | **`10.0 kn`** (`11.5 mph`) | **`115 lbf`** (`52 kgf` / `512 N`) | `3.15 kW` (`4.2 HP`) | **`3.66 kW`** (`71.5 A`) | **`366 Wh/nm`** | `3–4 sec` transition | Hull lifts completely clear of water at `10.0 kn` |
+| **4. Eco Foiling Cruise (`6"` Clear!)** | **`12.5 kn`** (`14.4 mph`) | **`42 lbf`** (`19 kgf` / `187 N`) | `1.65 kW` (`2.2 HP`) | **`1.92 kW`** (`37.5 A`) | **`154 Wh/nm`** | **`2.7 hrs` (`33.3 nm`)** | **`64%` less power** & **`2.7×` range** vs planing! |
+| **5. Standard Foiling Cruise (Sweet Spot)** | **`15.5 kn`** (`17.8 mph`) | **`46 lbf`** (`21 kgf` / `205 N`) | `2.25 kW` (`3.0 HP`) | **`2.62 kW`** (`51.2 A`) | **`169 Wh/nm`** | **`2.0 hrs` (`30.3 nm`)** | **`67%` less power (`2.6 kW` vs `7.9 kW`) & `3.0×` range (`30.3 nm` vs `10.0 nm`)!** |
+| **6. Fast Foiling Cruise** | **`18.5 kn`** (`21.3 mph`) | **`55 lbf`** (`25 kgf` / `245 N`) | `3.30 kW` (`4.4 HP`) | **`3.84 kW`** (`75.0 A`) | **`208 Wh/nm`** | **`1.3 hrs` (`24.7 nm`)** | Uses less power at `18.5 kn` than non-foiling at `10.5 kn`! |
+| **7. Max Continuous Foiling (`ME1304` Cont.)** | **`22.5 kn`** (`25.9 mph`) | **`82 lbf`** (`37 kgf` / `365 N`) | `6.20 kW` (`8.3 HP`) | **`7.21 kW`** (`141 A`) | **`320 Wh/nm`** | **`0.7 hrs` (`16.0 nm`)** | **`+7.0 knots` faster** top continuous speed |
+
+* **External Hydrofoil + Tall-Shaft Upgrade Add-On BOM (`+$950 – $1,450` over standard dinghy kit):**
+  * Tall `20"–25"` donor outboard leg + vertical sliding/kick-up transom jack plate (`+$150`)
+  * Two commercial carbon-fiber kite/wing-foil front wings (`800 cm²` each = `1,600 cm²` main lift, or a single `1,550 cm²` high-aspect pump-foil wing on a central portal) + `650 cm²` outboard anti-ventilation plate stabilizer wing (`$550–$850`)
+  * Anodized `6061-T6` athwartships saddle beam, flip-up side pivot brackets, contoured PVC tube saddles, and longitudinal transom torque tie-bars (`$250–$450`)
 
 ---
 
