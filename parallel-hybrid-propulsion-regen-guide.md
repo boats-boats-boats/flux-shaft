@@ -234,7 +234,7 @@ Standard folding propellers collapse when unpowered and cannot regenerate under 
 ## 8. DIY Build Blueprints & Cost Breakdown
 
 ### A. Mechanical Packaging: The `FluxShaft` Intermediate Bridge Module
-Because the **2009 Beneteau Oceanis 40** currently has its aft cabin bulkheads and cabinets removed for post-fire refit ([`interior-refit-guide.md`](../beneteau-40-2009/interior-refit-guide.md)), you have full vertical and lateral access to the shaft alley behind the `Kanzaki KM35`:
+To package the dual-clutch intermediate shaft assembly cleanly in the shaft alley behind a `Kanzaki KM35` or `KM2P` gearbox:
 
 1. **Shorten or Slide Back the `1.25"` Prop Shaft by `140–180 mm` (or Machine a Stepped Intermediate Shaft):**
    * Bolt a flanged **`1.25"` (`31.75 mm`) `17-4PH` / `Aquamet 22` stub shaft** (`160 mm` long) to the `KM35` output flange, supported by a heavy-duty **cast-steel or `316` stainless double-row spherical roller pillow-block bearing** bolted to a `3/8"` (`10 mm`) laser-cut steel/aluminum bridge frame spanning the engine beds.

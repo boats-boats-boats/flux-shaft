@@ -47,18 +47,18 @@ flowchart LR
 ## Repository Contents
 
 * **[`parallel-hybrid-propulsion-regen-guide.md`](parallel-hybrid-propulsion-regen-guide.md)** — Complete engineering guide covering the 4-mode dual-clutch architecture, `30+ ft` (`48 V`) vs. `40+ ft` (`96 V`) vessel sizing, first-principles comparison of axial-flux SPM (`ME1304`) vs. radial-flux IPM (`ME1616`), `Yanmar 4JH4-AE` (`3,000 RPM`) reduction-ratio and `2,000–2,200 RPM` charging tables, hydro-regeneration propeller trade-offs, `ABYC E-30 / ISO 16315:2026` floating-bus safety, and BOM/cost breakdowns.
-* *(See also [`../beneteau-hybrid/ai_mode_chat_reference.md`](../beneteau-hybrid/ai_mode_chat_reference.md) for the annotated source notes from the initial AI Mode review).*
 
 ---
 
 ## Development Roadmap
 
 - [x] **Phase 0: Drivetrain Physics, Motor Topology & 4-Mode Architecture Specification**
-  - Verify `Yanmar 4JH4-AE` (`39.6 kW` @ `3,000 RPM`, `126 N·m` flat torque curve) and `Kanzaki KM35P/A2` ratios (`2.36 / 2.61` and `2.33 / 2.64`).
+  - Characterize `30+ ft` (`18–28 HP`, `48 V`) and `40+ ft` (`Yanmar 4JH4-AE` `39.6 kW` @ `3,000 RPM`, `126 N·m` flat torque curve, `Kanzaki KM35P/A2` `2.36 / 2.61` and `2.33 / 2.64`, `96 V`) reference drivetrains.
   - Compare `1 × ME1616`, `2 × ME1616`, and `2 × ME1304` across `2.0:1–3.5:1` ratios and `2,000–3,000 RPM` diesel charging curves.
   - Define the 2-clutch (`KM35` + aft shaft dog clutch) architecture enabling stationary anchor generation with the propeller stopped.
-- [ ] **Phase 1: Gearbox Plate Verification & Shaft-Alley CAD Packaging (`Beneteau 40` & `Hunter 326/35`)**
-  - Inspect the installed `KM35` nameplate on the `2009 Beneteau Oceanis 40` while aft cabin bulkheads are removed ([`../beneteau-40-2009/interior-refit-guide.md`](../beneteau-40-2009/interior-refit-guide.md)) and measure radial clearance for the `70T` (`178 mm`) vs. `84T` (`214 mm`) `8M` shaft pulley.
+- [ ] **Phase 1: Shaft-Alley CAD Packaging (`30+ ft` & `40+ ft` Reference Envelopes)**
+  - Verify `KM35` / `KM2P` shaft-alley envelopes and radial clearance for `70T` (`178 mm`) vs. `84T` (`214 mm`) `8M` timing pulleys.
+  - Generate parametric `CadQuery` / `OpenSCAD` models (`STEP` / `DXF`) for the bridge frame, intermediate stub shaft, pillow blocks, `Clutch 2` square-jaw dog sleeve, and aft thrust bulkhead.
   - Generate parametric `CadQuery` / `OpenSCAD` models (`STEP` / `DXF`) for the bridge frame, `1.25"` intermediate stub shaft, pillow blocks, `Clutch 2` square-jaw dog sleeve, and aft thrust bulkhead.
 - [ ] **Phase 2: Bench Dyno & Controller Characterization (`ME1616` + `Sevcon Gen4 Size 6`)**
   - Bench-test `Motenergy ME1616` + `Sevcon Gen4` sin/cos encoder phasing, `KTY84-130` thermal protection, 4-quadrant throttle/regen mapping, and `BMS` high-cell (`3.50 V/cell`) automatic regen current ramp-down.

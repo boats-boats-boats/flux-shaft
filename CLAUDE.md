@@ -3,7 +3,7 @@
 ## 1. Project Overview
 `flux-shaft` (**FluxShaft**) is an R&D and marine drivetrain engineering repository for **4-mode parallel-hybrid electric propulsion, stationary & underway diesel generation, and under-sail hydro-regeneration** on **`30+ ft` (`48 V`, e.g., Hunter 326 / Hunter 35)** and **`40+ ft` (`96 V`, e.g., 2009 Beneteau Oceanis 40)** shaft-drive sailboats.
 
-Primary reference document: [`parallel-hybrid-propulsion-regen-guide.md`](parallel-hybrid-propulsion-regen-guide.md) (with earlier review notes in [`../beneteau-hybrid/ai_mode_chat_reference.md`](../beneteau-hybrid/ai_mode_chat_reference.md)).
+Primary reference document: [`parallel-hybrid-propulsion-regen-guide.md`](parallel-hybrid-propulsion-regen-guide.md).
 
 ---
 
@@ -11,8 +11,8 @@ Primary reference document: [`parallel-hybrid-propulsion-regen-guide.md`](parall
 
 When generating mechanical CAD, pulley/gear calculations, electrical schematics, controller maps, or BOMs in this repository, always adhere to these physical and regulatory constraints:
 
-1. **Yanmar 4JH4-AE Engine & Kanzaki KM35 Gearbox Specs (Beneteau 40):**
-   * The upgraded engine in the `2009 Beneteau Oceanis 40` is the naturally aspirated `2.19 L` **Yanmar 4JH4-AE**, rated at **`39.6 kW` (`53.8 mhp` / `~54 SAE HP`) maximum at `3,000 RPM`** and **`36.0 kW` (`48.3 HP`) continuous at `2,907 RPM`** (`~38.5 kW` max at the shaft after `3%` gearbox loss). **Never use `3,800 RPM` for the `4JH4-AE`.**
+1. **Reference `40+ ft` Diesel & Marine Gearbox Specs (`Yanmar 4JH4-AE` + `Kanzaki KM35`):**
+   * The reference `40+ ft` auxiliary diesel (`Beneteau 40` class) is the naturally aspirated `2.19 L` **Yanmar 4JH4-AE**, rated at **`39.6 kW` (`53.8 mhp` / `~54 SAE HP`) maximum at `3,000 RPM`** and **`36.0 kW` (`48.3 HP`) continuous at `2,907 RPM`** (`~38.5 kW` max at the shaft after `3%` gearbox loss). **Never use `3,800 RPM` for the `4JH4-AE`.**
    * Its crankshaft torque curve is flat at **`124–127 N·m` from `1,800 to 3,000 RPM`**.
    * Paired transmission is the mechanical cone-clutch **Kanzaki `KM35P`** (`2.36:1` or `2.61:1` forward, giving **`1,271` or `1,149 shaft RPM` max** at `3,000 RPM`) or **`KM35A2`** (`7°` down-angle, `2.33:1` or `2.64:1` forward, giving **`1,288` or `1,136 shaft RPM` max**).
    * Per Yanmar service advisory **`MSA08-003`**, `KM`-series mechanical cone-clutch gearboxes **must be left in `NEUTRAL`** when the shaft is spun by the water (sailing regen) or by an aft electric motor. **Never design a topology that back-drives a Kanzaki `KM35` in Forward gear with the diesel off**, as reverse torque un-wedges the helical mechanical cone clutch.
