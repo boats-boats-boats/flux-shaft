@@ -197,7 +197,104 @@ Consequently, **surplus diesel power peaks between `2,000` and `2,200 RPM`** (`1
 
 ---
 
-## 6. Under-Sail Hydrogeneration & Propeller Selection
+## 6. Pushing Force (Thrust) vs. Electrical Energy Consumption
+
+### A. First-Principles Physics: Why Pushing Force Scales with Torque, While Power Scales with $\text{Thrust}^{1.5}$
+For any fixed-pitch marine propeller of diameter $D$ operating at advance ratio $J$, propeller thrust ($T = K_T \rho n^2 D^4$) and shaft torque ($\tau_{\text{shaft}} = K_Q \rho n^2 D^5$) both scale with $\text{RPM}^2$. Consequently:
+1. **Pushing Force is Directly Proportional to Shaft Torque (and Motor Phase Current):**
+   $$F_{\text{push}} = (1 - t) \frac{K_T}{K_Q D} \tau_{\text{shaft}} \propto I_{\text{phase}}$$
+   *(where $(1 - t) \approx 0.82$ accounts for hull thrust deduction and the `~10°` shaft inclination).*
+   * **`18"` (`457 mm`) 3-Blade Prop (`40+ ft` `Beneteau 40` Class):** Every **`1 N·m` of shaft torque** produces **`~3.52 lbf` (`15.6 N` / `1.60 kgf`) of static bollard pull** at `0 kn`, or **`~3.07 lbf` (`13.7 N` / `1.39 kgf`) of net forward hull thrust** at cruising speed.
+   * **`15"` (`381 mm`) 3-Blade Prop (`30–36 ft` `Hunter 326 / 35` Class):** Every **`1 N·m` of shaft torque** produces **`~4.30 lbf` (`19.1 N` / `1.95 kgf`) of static bollard pull**, or **`~3.60 lbf` (`16.0 N` / `1.63 kgf`) of net cruise thrust**.
+2. **Battery Power Scales with $\text{Thrust}^{1.5}$:**
+   * Because $\tau_{\text{shaft}} \propto \text{RPM}^2$ and $P_{\text{shaft}} \propto \text{RPM}^3$, **doubling your pushing force (`2× lbf`) requires `2.83×` ($2^{1.5}$) more battery power (`kW`)**. Conversely, throttling back by `1.2–1.5 knots` cuts battery power draw by **`65%–75%`**.
+
+---
+
+### B. Maximum Pushing Force Ceiling by Motor & Vessel Configuration
+*(Assuming $\eta_{\text{drive}} \approx 88\%$ total battery-to-shaft efficiency: `Sevcon Gen4` `96%` $\times$ `Motenergy` `94%` $\times$ `8M Carbon Belt + Bearings` `97.5%`)*
+
+| Motor & Vessel Configuration | Reduction Ratio | Max Cont. Shaft Torque | **Max Continuous Pushing Force (Bollard / Cruise)** | Battery Draw @ Max Cont. | Max Peak Shaft Torque (`1 min`) | **Max Peak Pushing Force (`1 min` Emergency / Hole-Shot)** | Battery Draw @ Peak |
+| :--- | :---: | :---: | :--- | :--- | :---: | :--- | :--- |
+| **Tier 0: `1 × ME1304` (`48 V`, `8.5"` Prop — `10 ft` `True Kit` Dinghy)** | `2.08:1` *(Outboard leg)* | `50 N·m` | **`185 lbf` (`84 kgf`)** open prop<br>**`212 lbf` (`96 kgf`)** w/ `Kort 19A` | **`7.9 kW`** (`154 A` @ `51.2 V`) | `180 N·m` | **`295 lbf` (`134 kgf`)** open prop<br>**`345 lbf` (`156 kgf`)** w/ `Kort 19A` | **`15.7 kW`** (`307 A` @ `51.2 V`) |
+| **Tier 1: `1 × ME1616` (`48 V`, `15"` Prop — `30+ ft` `Hunter`)** | `2.2:1` | `107 N·m` | **`460 lbf` (`209 kgf`)** bollard<br>**`385 lbf` (`175 kgf`)** cruise | **`11.6 kW`** (`226 A` @ `51.2 V`) | `267 N·m` | **`620+ lbf` (`281 kgf` / `2.76 kN`)** *(prop-cavitation limited)* | **`23.9 kW`** (`466 A` @ `51.2 V`) |
+| **Tier 2: `2 × ME1304` (`96 V`, `18"` Prop — `40+ ft` `Beneteau`)** | `2.5:1` | `121 N·m` | **`426 lbf` (`193 kgf`)** bollard<br>**`372 lbf` (`169 kgf`)** cruise | **`11.9 kW`** (`116 A` @ `102.4 V`) | `436 N·m` | **`1,280+ lbf` (`581 kgf` / `5.69 kN`)** | **`61.8 kW`** (`603 A` @ `102.4 V`) |
+| **Tier 2A: `1 × ME1616` (`96 V`, `18"` Prop — `40+ ft` `Beneteau`)** | **`2.5:1`** | `121 N·m` | **`426 lbf` (`193 kgf`)** bollard<br>**`372 lbf` (`169 kgf`)** cruise | **`11.9 kW`** (`116 A` @ `102.4 V`) | `303 N·m` | **`1,065 lbf` (`483 kgf` / `4.74 kN`)** *(Exceeds 54 HP Yanmar!)* | **`43.5 kW`** (`425 A` @ `102.4 V`) |
+| **Tier 2A: `1 × ME1616` (`96 V`, `18"` Prop — `40+ ft` `Beneteau`)** | **`3.0:1`** | **`146 N·m`** | **`512 lbf` (`232 kgf`)** bollard<br>**`447 lbf` (`203 kgf`)** cruise | **`15.6 kW`** (`153 A` @ `102.4 V`) | `364 N·m` | **`1,280 lbf` (`581 kgf` / `5.69 kN`)** | **`55.5 kW`** (`542 A` @ `102.4 V`) |
+| **Tier 2B: `2 × ME1616` (`96 V`, `18"` Prop — `40+ ft` `Beneteau`)** | **`2.5:1`** | **`243 N·m`** | **`853 lbf` (`387 kgf`)** bollard<br>**`745 lbf` (`338 kgf`)** cruise | **`33.6 kW`** (`328 A` @ `102.4 V`) | `606 N·m` | **`1,324+ lbf` (`601 kgf`)** *(Cavitation ceiling of `18"` prop)* | **`43.7+ kW`** (`427+ A`) |
+| **Tier 2B: `2 × ME1616` (`96 V`, `18"` Prop — `40+ ft` `Beneteau`)** | **`3.0:1`** | **`291 N·m`** | **`1,017 lbf` (`461 kgf`)** bollard<br>**`888 lbf` (`403 kgf`)** cruise | **`43.7 kW`** (`427 A` @ `102.4 V`) | `728 N·m` | **`1,324+ lbf` (`601 kgf`)** *(100% matches/beats 4JH4-AE)* | **`43.7+ kW`** (`427+ A`) |
+
+---
+
+### C. Tier 2 (`40+ ft` `Beneteau 40` Class, `18,210 lb`, `18"` Prop, `96 V` / `102.4 V` Nominal, `28.6 kWh` Pack)
+Step-by-step **Pushing Force vs. Electrical Energy Consumption** from harbor creep to full `7.8-knot` hull speed (`3.0:1` belt ratio on `2.36:1` `KM35` gear):
+
+| Operating Regime | Shaft RPM (`Motor RPM`) | Shaft Torque | **Net Cruise Pushing Force** | **Static Bollard Pull (`0 kn`)** | Calm-Water Boat Speed | **Battery Power Draw (`DC kW` & `Amps`)** | **Energy per Mile (`Wh/nm`)** | **Endurance & Range (`28.6 kWh` Pack)** | Which Motors Sustain This? |
+| :--- | :---: | :---: | :--- | :--- | :---: | :--- | :---: | :---: | :--- |
+| **1. Harbor / Canal Creep** | `450 RPM`<br>(`1,350`) | `36 N·m` | **`111 lbf`**<br>(`50 kgf` / `495 N`) | **`127 lbf`**<br>(`58 kgf` / `567 N`) | **`3.5 kn`** | **`1.9 kW`**<br>(`19 A`) | **`543 Wh/nm`** | **`14.7 hrs`**<br>(`51.5 nm`) | All (`1× ME1616`, `2× ME1304`, `2× ME1616`) |
+| **2. Eco Range Cruise** | `650 RPM`<br>(`1,950`) | `76 N·m` | **`232 lbf`**<br>(`105 kgf` / `1,033 N`) | **`266 lbf`**<br>(`121 kgf` / `1,183 N`) | **`5.1 kn`** | **`5.9 kW`**<br>(`57 A`) | **`1,150 Wh/nm`** | **`4.9 hrs`**<br>(`24.9 nm`) | All (`~50%` cont. torque on `1× ME1616`) |
+| **3. Standard Cruise** *(`1× ME1616` Cont. @ `2.5:1`)* | `823 RPM`<br>(`2,469`) | `121 N·m` | **`372 lbf`**<br>(`169 kgf` / `1,656 N`) | **`426 lbf`**<br>(`193 kgf` / `1,896 N`) | **`6.2 kn`** | **`11.9 kW`**<br>(`116 A`) | **`1,919 Wh/nm`** | **`2.4 hrs`**<br>(`14.9 nm`) | **Max Cont. for `1× ME1616` / `2× ME1304` @ `2.5:1`** |
+| **4. Fast Electric Cruise** *(`1× ME1616` Cont. @ `3.0:1`)* | `902 RPM`<br>(`2,706`) | `146 N·m` | **`447 lbf`**<br>(`203 kgf` / `1,990 N`) | **`512 lbf`**<br>(`232 kgf` / `2,278 N`) | **`6.6 kn`** | **`15.6 kW`**<br>(`153 A`) | **`2,364 Wh/nm`** | **`1.8 hrs`**<br>(`12.1 nm`) | **Max Cont. for `1× ME1616` / `2× ME1304` @ `3.0:1`** |
+| **5. Heavy-Weather Cruise** *(`2× ME1616` @ `60%` torque)* | `1,000 RPM`<br>(`3,000`) | `179 N·m` | **`550 lbf`**<br>(`249 kgf` / `2,445 N`) | **`629 lbf`**<br>(`286 kgf` / `2,800 N`) | **`7.0 kn`** | **`21.3 kW`**<br>(`208 A`) | **`3,043 Wh/nm`** | **`1.3 hrs`**<br>(`9.4 nm`) | **`2× ME1616` Continuous** *(or `1× ME1616` boost)* |
+| **6. High-Output Cruise** *(`2× ME1616` Cont. @ `2.5:1`)* | `1,164 RPM`<br>(`3,492`) | `243 N·m` | **`745 lbf`**<br>(`338 kgf` / `3,313 N`) | **`853 lbf`**<br>(`387 kgf` / `3,794 N`) | **`7.5 kn`** | **`33.6 kW`**<br>(`328 A`) | **`4,480 Wh/nm`** | **`0.85 hrs`**<br>(`6.4 nm`) | **Max Cont. for `2× ME1616` @ `2.5:1`** *(or `1× ME1616` Peak)* |
+| **7. Full 54 HP Diesel Match** *(`2× ME1616` Cont. @ `3.0:1`)* | `1,271 RPM`<br>(`3,813`) | `289 N·m` | **`888 lbf`**<br>(`403 kgf` / `3,950 N`) | **`1,017 lbf`**<br>(`461 kgf` / `4,523 N`) | **`7.8 kn`** *(Hull Speed)* | **`43.7 kW`**<br>(`427 A`) | **`5,608 Wh/nm`** | **`0.65 hrs`**<br>(`5.1 nm`) | **Max Cont. for `2× ME1616` @ `3.0:1`** *(or `1× ME1616` Peak)* |
+| **8. Emergency Crash-Stop / Burst** *(`1× ME1616` Peak @ `3.0:1`)* | `1,426 RPM`<br>(`4,278`) | `364 N·m` | **`1,118 lbf`**<br>(`507 kgf` / `4,973 N`) | **`1,280 lbf`**<br>(`581 kgf` / `5,694 N`) | **`7.9 kn`** | **`61.8 kW`**<br>(`603 A`) | **`7,820 Wh/nm`** | `1–2 min` burst | **Peak for `1× ME1616` @ `3.0:1`** *(125% of Yanmar WOT torque!)* |
+
+* **Headwind & Sea-State Benchmarks (`40-ft` Sailboat with Bare Rig):**
+  * **`15 kn` headwind:** `~85 lbf` (`38 kgf`) aerodynamic drag.
+  * **`25 kn` headwind + `1 m` chop:** `~240–310 lbf` (`110–140 kgf`) combined wind + wave drag (easily sustained continuously by **`1 × ME1616` at `2.5:1` or `3.0:1`**).
+  * **`35 kn` gale on the nose:** `~480–600 lbf` (`220–270 kgf`) combined drag (sustained continuously by **`2 × ME1616`** or the **`54 HP Yanmar 4JH4-AE`**).
+
+---
+
+### D. Tier 1 (`30–36 ft` `Hunter 326 / 35` Class, `8,300–12,500 lb`, `15"` Prop, `48 V` / `51.2 V` Nominal, `14.3 kWh` Pack)
+With **`1 × Motenergy ME1616`** (or `2 × ME1304`) at `48 V` (`2.2:1` belt ratio):
+
+| Operating Regime | Calm-Water Speed (`Hunter 326`) | **Net Cruise Pushing Force** | **Static Bollard Pull (`0 kn`)** | Shaft Power | **Battery Power Draw (`DC kW` & `Amps @ 51.2 V`)** | **Energy per Mile (`Wh/nm`)** | **Endurance & Range (`14.3 kWh` Pack)** |
+| :--- | :---: | :--- | :--- | :---: | :--- | :---: | :---: |
+| **1. Harbor / Canal Creep** | **`3.5 kn`** | **`58 lbf`** (`26 kgf` / `258 N`) | **`68 lbf`** (`31 kgf`) | `0.75 kW` | **`0.85 kW`** (`17 A`) | **`244 Wh/nm`** | **`16.8 hrs` (`58.7 nm`)** |
+| **2. Eco Range Cruise** | **`4.5 kn`** | **`98 lbf`** (`44 kgf` / `436 N`) | **`115 lbf`** (`52 kgf`) | `1.65 kW` | **`1.88 kW`** (`37 A`) | **`417 Wh/nm`** | **`7.6 hrs` (`34.3 nm`)** |
+| **3. Standard Cruise** | **`5.5 kn`** | **`162 lbf`** (`73 kgf` / `721 N`) | **`190 lbf`** (`86 kgf`) | `3.40 kW` | **`3.86 kW`** (`75 A`) | **`702 Wh/nm`** | **`3.7 hrs` (`20.4 nm`)** |
+| **4. Fast Electric Cruise** | **`6.2 kn`** | **`240 lbf`** (`109 kgf` / `1,068 N`) | **`280 lbf`** (`127 kgf`) | `5.80 kW` | **`6.59 kW`** (`129 A`) | **`1,063 Wh/nm`** | **`2.2 hrs` (`13.5 nm`)** |
+| **5. `1× ME1616` @ `48V` Cont. Ceiling** | **`6.8 kn`** | **`365 lbf`** (`166 kgf` / `1,624 N`) | **`430 lbf`** (`195 kgf`) | `10.20 kW` | **`11.59 kW`** (`226 A`) | **`1,705 Wh/nm`** | **`1.2 hrs` (`8.4 nm`)** |
+| **6. Stock `18 HP` Diesel WOT Match** | **`7.13 kn`** | **`430 lbf`** (`195 kgf` / `1,913 N`) | **`505 lbf`** (`229 kgf`) | `12.80 kW` | **`14.55 kW`** (`284 A`) | **`2,040 Wh/nm`** | **`1.0 hr` (`7.0 nm`)** |
+| **7. `1× ME1616` `1-Min` Peak Burst** | **`7.3 kn`** | **`620 lbf`** (`281 kgf` / `2,758 N`) | **`710 lbf`** (`322 kgf`) | `21.00 kW` | **`23.86 kW`** (`466 A`) | **`3,269 Wh/nm`** | `1–2 min` burst |
+
+---
+
+### E. Tier 0: `10 ft` Inflatable Catamaran Dinghy (`True Kit Navigator 300 / Discovery 330`) with `1 × ME1304 @ 48 V`
+
+While the heavier radial-IPM **`ME1616` (`24 kg` / `53 lb`)** wins inside a yacht's engine room, the **axial-flux `Motenergy ME1304` (`15.9 kg` / `35 lb`, flat `Ø223 × 167 mm` pancake)** is the **ideal electric outboard powerhead** for an ultralight **`10 ft` (`3.0–3.3 m`) `True Kit` inflatable tunnel-hull catamaran tender**:
+
+* **Vessel Specs (`True Kit Navigator 300` / `Discovery 330`):**
+  * **Bare Hull Weight:** `31–36 kg` (`68–79 lb`); **Capacity:** `500 kg` (`1,100 lb`); **Rated Outboard:** `6–10 HP` (`Navigator 300`) to `15 HP` (`Discovery 330`).
+  * **Why Tunnel-Catamaran + Axial-Flux `ME1304` is a Magic Combination:**
+    1. **Lighter Than a `6 HP` 4-Stroke Gas Outboard:** Bolting a `15.9 kg` `ME1304` onto a stripped `Mercury / Tohatsu 6–9.9 HP` lower leg (`2.08:1` bevel gear + raw-water cooling pickup feeding the `ME1304`'s cooling jacket) yields a complete **`~24.5 kg` (`54 lb`) electric outboard** that delivers **`9.2 HP` (`6.8 kW`) continuous shaft power** and **`18.5 HP` (`13.8 kW`) peak hole-shot power**!
+    2. **Zero Planing Hump:** Unlike a flat-bottom or V-hull inflatable that drags a huge stern wave before climbing onto plane, the `True Kit`'s narrow dual catamaran sponsons slice smoothly from `6 kn` to `15+ kn` (`17+ mph`) using **`35%–45%` less power**.
+    3. **Emergency "Tugboat" Mode with a `Kort 19A` Nozzle:** Fitting an `8.5" × 8"` propeller inside a **Kort 19A accelerating duct** boosts static bollard thrust by **`+20% to +25%`** (up to **`212 lbf` continuous / `345 lbf` peak**)—allowing the `10 ft` dinghy (lashed alongside the yacht's quarter) to hip-tow a `30–40 ft` sailboat into a marina slip at `3.0–3.5 knots`!
+    4. **Unified `48 V` Battery Ecosystem:** A portable waterproof **`48 V 100 Ah` (`5.12 kWh`, `~36 kg` / `79 lb`) LiFePO4 battery case** sits forward in the bow (balancing the skipper's weight so the cat planes flat) and charges directly from the mothership's `HelioStrake` solar array or `FluxShaft` bus.
+
+#### `True Kit 10 ft` + `1 × ME1304 @ 48 V` (`51.2 V` Nominal, `5.12 kWh` Pack) — Pushing Force vs. Energy Consumption
+
+| Operating Regime (`1–2 Adults`, `~220 kg` Total) | Speed (`knots` / `mph`) | **Pushing Force (Open `8.5"` Prop)** | **Pushing Force (w/ `Kort 19A` Nozzle)** | Shaft Power (`HP`) | **Battery Power Draw (`DC kW` & `Amps @ 51.2 V`)** | **Energy per Mile (`Wh/nm`)** | **Runtime & Range (`5.12 kWh` Pack)** |
+| :--- | :---: | :--- | :--- | :---: | :--- | :---: | :---: |
+| **1. Trolling / No-Wake Harbor** | **`3.0 kn`** (`3.5 mph`) | **`24 lbf`** (`11 kgf` / `107 N`) | **`30 lbf`** (`14 kgf` / `133 N`) | `0.22 kW` (`0.3 HP`) | **`0.26 kW`** (`5.0 A`) | **`85 Wh/nm`** | **`20.0 hrs` (`60.0 nm`)** |
+| **2. Displacement Eco Cruise** | **`4.5 kn`** (`5.2 mph`) | **`45 lbf`** (`20 kgf` / `200 N`) | **`56 lbf`** (`25 kgf` / `249 N`) | `0.58 kW` (`0.8 HP`) | **`0.67 kW`** (`13.2 A`) | **`150 Wh/nm`** | **`7.6 hrs` (`34.2 nm`)** |
+| **3. Fast Displacement / Semi-Plane** | **`6.5 kn`** (`7.5 mph`) | **`78 lbf`** (`35 kgf` / `347 N`) | **`96 lbf`** (`44 kgf` / `427 N`) | `1.45 kW` (`1.9 HP`) | **`1.69 kW`** (`33.0 A`) | **`259 Wh/nm`** | **`3.0 hrs` (`19.7 nm`)** |
+| **4. Catamaran Planing Cruise** | **`10.0 kn`** (`11.5 mph`) | **`118 lbf`** (`54 kgf` / `525 N`) | **`142 lbf`** (`64 kgf` / `632 N`) | `3.20 kW` (`4.3 HP`) | **`3.72 kW`** (`72.7 A`) | **`372 Wh/nm`** | **`1.4 hrs` (`13.8 nm`)** |
+| **5. Fast Planing (`6 HP` Gas Equiv.)** | **`13.0 kn`** (`15.0 mph`) | **`145 lbf`** (`66 kgf` / `645 N`) | **`170 lbf`** (`77 kgf` / `756 N`) | `4.60 kW` (`6.2 HP`) | **`5.35 kW`** (`104 A`) | **`411 Wh/nm`** | **`1.0 hr` (`12.4 nm`)** |
+| **6. `ME1304` @ `48V` Cont. Max** | **`15.5 kn`** (`17.8 mph`) | **`185 lbf`** (`84 kgf` / `823 N`) | **`212 lbf`** (`96 kgf` / `943 N`) | `6.80 kW` (`9.2 HP`) | **`7.91 kW`** (`154 A`) | **`510 Wh/nm`** | **`0.65 hrs` (`10.0 nm`)** |
+| **7. `ME1304` Peak Hole-Shot / Tow** | **`19.0 kn`** (`21.9 mph`) | **`295 lbf`** (`134 kgf` / `1,312 N`) | **`345 lbf`** (`156 kgf` / `1,535 N`) | `13.50 kW` (`18.1 HP`) | **`15.70 kW`** (`307 A`) | **`826 Wh/nm`** | `1–2 min` burst |
+
+* **Dinghy Conversion BOM (`~$2,650` complete incl. `5.12 kWh` battery, vs. `$6,500–$9,000` for a `Torqeedo Cruise 6.0` / `ePropulsion Navy 6.0`):**
+  * `1 × Motenergy ME1304` liquid-cooled axial-flux PMSM (`$965`)
+  * `1 × Sevcon Gen4 Size 4 (48V, 350A)` or ` Curtis 1236SE-5421` mounted on a water-cooled aluminum baseplate (`$750`)
+  * Donor `Mercury / Tohatsu 6–9.9 HP` outboard lower leg + CNC `6061-T6` powerhead adapter plate + splined shaft coupler (`$350`)
+  * Waterproof `IP67` `Pelican`-style `48 V 100 Ah` (`5.12 kWh`) `LiFePO4` battery box (`16S EVE LF105` + `200 A JK BMS` + `Anderson SB175` quick-disconnect, `$585`)
+
+---
+
+## 7. Under-Sail Hydrogeneration & Propeller Selection
 
 Standard folding propellers collapse when unpowered and cannot regenerate under sail, while standard feathering propellers (`Max-Prop`, `Autostream`) align their blades with the flow as soon as forward drive stops unless specifically pitched for regeneration.
 
@@ -209,7 +306,7 @@ Standard folding propellers collapse when unpowered and cannot regenerate under 
 
 ---
 
-## 7. Electrical Safety, Controllers & Marine Standards (`ABYC E-11 / E-30` & `ISO 16315:2026`)
+## 8. Electrical Safety, Controllers & Marine Standards (`ABYC E-11 / E-30` & `ISO 16315:2026`)
 
 ### A. Why `60 V DC` (`ABYC`) and `50 V DC` (`ISO`) Are the Real Engineering Boundaries
 * **Tier 1 (`48 V` Nominal / `58.4 V` Max on `16S LiFePO4`):** Stays under the **`60 V DC` ABYC E-11** boundary (extra-low voltage DC).
@@ -231,7 +328,7 @@ Standard folding propellers collapse when unpowered and cannot regenerate under 
 
 ---
 
-## 8. DIY Build Blueprints & Cost Breakdown
+## 9. DIY Build Blueprints & Cost Breakdown
 
 ### A. Mechanical Packaging: The `FluxShaft` Intermediate Bridge Module
 To package the dual-clutch intermediate shaft assembly cleanly in the shaft alley behind a `Kanzaki KM35` or `KM2P` gearbox:
