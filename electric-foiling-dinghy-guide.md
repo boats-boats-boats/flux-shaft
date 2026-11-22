@@ -113,13 +113,15 @@ Beyond a transom outboard with a portable bow battery box, an inflatable tunnel 
 
 | Drive Option | Voltage & Power | Max Static Thrust | **Thrust Efficiency (`lbf/kW`)** | Weight & Cost | Foiling Compatible? | Best Application |
 | :--- | :--- | :--- | :---: | :--- | :---: | :--- |
+| **`W-30` CNC Azimuth Pod** *(1× or 2×; `570 / 730 mm` shaft, `±85°` electric steer)* | **`36–48 V`** (`120 A` peak), **`3.2 kW` peak** (`~1.8–2.2 kW` cont.) @ `5,000 RPM` *(verify ESC `V_max` for `16S`!)* | **`55 lbf`** (`25 kgf`) single<br>**`110 lbf`** (`50 kgf`) pair | **`17.2 lbf/kW`** *(high-RPM, high-pitch speed prop)* | **`6.6 kg` single** / `13.2 kg` pair *(CNC aluminum + built-in steer + remote)* | **Yes (Pair on `730 mm` tall shafts)** *(single `55 lbf` is shy of takeoff hump unless `2,600+ cm²` wings)* | **Ultralight ready-made drive-by-wire tall-shaft pod** with `±85°` (`170°`) azimuth steering out of the box. |
 | **`2 × APISQUEEN U30` All-Metal Ducted Thrusters** *(2 kW ea., w/ ESCs)* | **`48 V`** *(stock ESC max `12S LiPo` = `50.4 V`; use **`14S LiFePO4`** or **`75 V` `VESC`** for `16S`)*, **`4.0 kW`** (`2 × 2 kW`) | **`132 lbf`** (`60 kgf`, `2 × 30 kgf`) | **`33.0 lbf/kW`** *(Best low-speed bollard eff.!)* | `2 × 2.14 kg` + `2 × 0.5 kg` ESC = **`5.3 kg` total** (`~$1,300` pair) | **Marginal (`1-up` low-speed)** *(high-thrust ROV nozzle pitch tops out ~`10–12 kn` unless re-propped)* | **Plug-and-play twin torpedo / stern pods** for `4–11 kn` silent cruising, joystick docking, & emergency hip-towing. |
 | **`2 × Flipsky 65161` IP68 E-Foil Pods** *(higher-power direct-drive)* | **`48–72 V`** (`2 × 3–6 kW` = **`6–12 kW`**) | **`200–240 lbf`** (`91–109 kgf`, `7.5"` high-pitch props) | **`24–26 lbf/kW`** | `2 × 3 kg` (`~$600` + `2 × VESC` `$500` = `~$1,100`) | **Yes (`12–23 kn`)** *(high-pitch e-foil props + bolts onto foil struts or torpedo tailcones)* | **Best lightweight high-speed submerged drive** for foiling struts, twin torpedoes, & joystick steering. |
 | **`APISQUEEN BP100` Pump-Jet** | **`72–86 V`** (`150 A`), **`10 kW`** @ `6,500 RPM` | **`158 lbf`** (`72 kgf`) | **`15.8 lbf/kW`** | `8 kg` pump + `2.25 kg` ESC (`~$1,100–$1,215`) | **No** *(flush bottom intake sucks air when lifting out of water)* | **Prop-free, `3"`-draft rocky/sandy beaching** or detachable `10 kW` electric jet-surfboard cassette. |
 | **`1 × Motenergy ME1304` Outboard** *(Baseline)* | **`48 V`** (`6.8 kW` cont. / `13.5 kW` peak) | **`185–212 lbf`** cont. / **`295–345 lbf`** peak | **`24–27 lbf/kW`** | `~24.5–26 kg` complete (`~$1,715` motor + controller) | **Yes** *(with `20"`–`25"` tall leg)* | **Highest continuous thrust, emergency yacht tugboat mode (`Kort 19A`), & dry powerhead service.** |
 
-* **`APISQUEEN U30` (`2 kW` Ducted) vs. `Flipsky 65161` (`6 kW` Open E-Foil Pod) vs. `BP100` (`10 kW` Jet):**
-  * **`2 × APISQUEEN U30` (`$1,300`, `5.3 kg`, `132 lbf` @ `4 kW`):** Delivers an exceptional **`33 lbf/kW`** thanks to its shrouded all-metal Kort-style duct—nearly matching a `6 HP` outboard's static pull in a `5.3 kg` plug-and-play package! Two engineering checks apply: (1) **Voltage Ceiling:** the stock `U30` ESC is rated to `12S LiPo` (**`50.4 V` max**), whereas a standard `16S LiFePO4` pack charges to `55.2–58.4 V` (`3.45–3.65 V/cell`) and rests at `~53.2 V`; to run `U30`s safely on `LiFePO4`, either build a **`14S LiFePO4` pack (`44.8 V` nom. / `48.3–49.0 V` charge @ `3.45–3.50 V/cell`, strictly `<50.4 V`)**, or keep a standard **`16S LiFePO4` pack (`51.2 V` nom.)** and replace the stock ESCs with **`75 V`-rated `VESC` controllers (`Flipsky 75100`)** for safe switching-spike headroom above `58.4 V`; (2) **Pitch Speed:** shrouded bollard propellers lose thrust above `~10–12 knots`, so step up to **`2 × Flipsky 65161` (`6–12 kW`, high-pitch props)** if your target is `15–22 kn` foiling.
+* **Key Engineering Notes & OEM Landscape:**
+  * **`W-30` CNC Azimuth Pod (`3.2 kW` peak, `6.6 kg`, `570/730 mm` shaft, `±85°` steering):** Sold as a white-label Shenzhen / Zhejiang marine-robotics & USV OEM azimuth pod across AliExpress/Alibaba (similar OEM ecosystem to **Maytech**, **Flipsky**, **Waydoo**, and **Golden Motor EZ-Outboard**; higher-power `5–6 kW` / `40–50 kgf` USV azimuth variants exist on Alibaba). Its biggest strengths are **featherweight `6.6 kg` CNC-faired aluminum construction**, a **`730 mm` (`28.7"`) tall-shaft option**, **`5,000 RPM` high-speed pitch** (`11–18 kn`), and **built-in `±85°` electric steering**. Because `48 V × 120 A = 5.76 kW` while rated peak is `3.2 kW`, continuous thermal output is likely **`~1.8–2.2 kW`**. A single `W-30` (`55 lbf`) is borderline for foiling takeoff (`~75–85 lbf` needed solo), whereas a **pair of `730 mm` `W-30`s (`13.2 kg` total, `110 lbf` thrust, `6.4 kW` peak)** hits the foiling takeoff threshold with zero custom steering fabrication. **Confirm the internal ESC's exact max voltage before connecting a `58.4 V` `16S LiFePO4` pack** (`14S LiFePO4` at `48.3–49.0 V` is safe if the ESC is `12S LiPo` / `50.4 V`).
+  * **`2 × APISQUEEN U30` (`$1,300`, `5.3 kg`, `132 lbf` @ `4 kW`):** Delivers an exceptional **`33 lbf/kW`** thanks to its shrouded all-metal Kort-style duct—nearly matching a `6 HP` outboard's static pull in a `5.3 kg` plug-and-play package! Two engineering checks apply: (1) **Voltage Ceiling:** the stock `U30` ESC is rated to `12S LiPo` (**`50.4 V` max**), whereas a standard `16S LiFePO4` pack charges to `55.2–58.4 V` (`3.45–3.65 V/cell`) and rests at `~53.2 V`; to run `U30`s safely on `LiFePO4`, either build a **`14S LiFePO4` pack (`44.8 V` nom. / `48.3–49.0 V` charge @ `3.45–3.50 V/cell`, strictly `<50.4 V`)**, or keep a standard **`16S LiFePO4` pack (`51.2 V` nom.)** and replace the stock ESCs with **`75 V`-rated `VESC` controllers (`Flipsky 75100`)** for safe switching-spike headroom above `58.4 V`; (2) **Pitch Speed:** shrouded bollard propellers lose thrust above `~10–12 knots`, so step up to **`2 × Flipsky 65161` (`6–12 kW`, high-pitch props)** or **`Flipsky 70181` (`10 kW`)** if your target is `15–22 kn` foiling.
   * **`APISQUEEN BP100` (`10 kW` Jet):** Accelerating a small `~100 mm` water column at `6,500 RPM` yields `~60%` of propeller thrust per kW (`15.8 lbf/kW`), delivering **`~14–15.5 knots`** at **`~650–700 Wh/nm`** (`~7.4 nm` on `5.12 kWh`)—vs. **`169 Wh/nm` (`30.3 nm`)** when foiling with a propeller. Choose a jet thruster for **swimmer safety and ultra-shallow beaching**, not range or foiling.
 
 ---
@@ -174,7 +176,41 @@ Replacing the `True Kit`'s removable `100 mm` drop-stitch air floor with a **`55
 
 ---
 
-## 5. Complete Bill of Materials (`Planing` vs. `Foiling` vs. `Battery-Floor` & `Jet` Conversions)
+## 5. Low-Cost Experimental Prototyping: Repurposing a `2.2 kW` (`M2200`) Round-Tube Outboard for Solo Foiling & Drive-by-Wire Control
+
+Generic `48 V` / `2,200 W` brushless electric outboards (e.g., `Hangkai M2200`, frequently inflated as "`8.0 HP`" on AliExpress) are widely available and make an ideal low-cost test mule for validating **hydrofoil lift-off, `NACA 0024` strut fairing, and electric steering/trim** before investing in a full `ME1304` or `Flipsky` build:
+
+### A. Power Reality Check & Why Swapping to a `Flipsky 75100` `VESC` Is Essential
+* **True Mechanical Output:** `2,200 W` electrical input (`48 V × ~46–50 A`) $\times$ `~83%` motor+gear efficiency = **`~1,825 W` at the shaft (`2.45 true shaft HP`)**, delivering `~75–95 lbf` (`34–43 kgf`) static thrust—roughly **`3.5–4.0 HP` gas displacement feel**, not `8.0 HP`.
+* **Mandatory Controller Upgrade — Swap the Stock ESC for a `Flipsky 75100` (`75 V / 100 A` FOC `VESC`, `~$95`):**
+  1. **Eliminates Crude Square-Wave Commutation:** Stock `M2200` controllers are basic `50 A` trapezoidal e-bike ESCs with harsh torque ripple and zero telemetry. A `VESC` runs quiet **Field-Oriented Control (`FOC`)**, improving low-end torque and motor efficiency by `5%–10%`.
+  2. **Safe `16S LiFePO4` Voltage Headroom:** Rated to **`75 V`**, giving `16+ V` of MOSFET switching-spike headroom above a fully charged `58.4 V` `16S LiFePO4` pack.
+  3. **Programmed `30-Second` Foiling Takeoff Boost:** Lets you safely program a **`3.0–3.5 kW` (`65–75 A`) short takeoff burst** to pop cleanly over the lift-off hump while enforcing a **`45 A` (`2.2 kW`) continuous thermal current limit** and live Bluetooth `W / A / RPM` logging.
+
+### B. Why Wrapping the Bare Round Shaft Tube in a `NACA 0024` Fairing Is Mandatory
+A bare round aluminum shaft tube (`Ø36 mm × 0.50 m` submerged) has a drag coefficient of **$C_D \approx 1.15$**, creating massive vortex shedding that pulls surface air straight down into the propeller (ventilation). Wrapping it in a **`3D`-printed `PETG`/`CF-Nylon` `NACA 0024` streamlined airfoil fairing (`150 mm` chord, skinned in `1–2` layers of `6 oz` glass/carbon + epoxy)** drops drag by **`~90%` (`~10×`)**:
+
+| Boat Speed | Bare `36 mm` Round Tube Drag & Wasted Power | Wrapped in `NACA 0024` Fairing (`150 mm` Chord) | **Power Saved by Fairing Alone** |
+| :---: | :--- | :--- | :---: |
+| **`6.0 kn`** | `22.7 lbf` (`101 N`) — wastes **`520 W`** | `2.6 lbf` (`11.4 N`) — uses `59 W` | **`461 W` saved** |
+| **`10.0 kn`** | **`63.1 lbf` (`281 N`) — wastes `2,407 W`!** | `7.1 lbf` (`31.7 N`) — uses `272 W` | **`2,135 W` saved!** |
+| **`13.0 kn`** | **`106.7 lbf` (`475 N`) — wastes `5,289 W`!** | `12.1 lbf` (`53.6 N`) — uses `598 W` | **`4,691 W` saved!** |
+
+*(At `10 knots`, an unfaired round tube burns more power than the entire `2,200 W` motor generates! The hollow trailing edge of the fairing also serves as a clean, dry wire chase for steering, trim, and temperature sensors).*
+
+### C. Solo Foiling Lift-Off Proof (`150 kg` / `330 lb` All-Up Test Mule)
+* **Weight Budget:** `True Kit 300` (`31 kg`) + stripped `M2200` (`12.5 kg`) + lightweight `48 V 40 Ah` `2.0 kWh` test pack (`14 kg`) + foil kit (`12 kg`) + solo skipper (`80 kg`) = **`150 kg` (`330 lb`)**.
+* **Oversized High-Aspect Pump-Foil Wings (`2,200 cm²` Front + `700 cm²` Aft = `2,900 cm²` Total):**
+  * **Takeoff Speed:** Drops to **`6.8 – 7.5 knots`** (`~1.9 kW` shaft / `~2.25 kW` battery draw — right inside `M2200` + `VESC` capability).
+  * **Steady-State Foiling (`11.5 kn` / `13.2 mph`):** Total drag drops to **`26.5 lbf` (`118 N`)** $\implies$ requires just **`1.07 kW` shaft (`1.28 kW` battery draw)**—only **`58%` of continuous rating**! *(Upgrade the low-pitch stock trolling prop to an `8"–9" × 9"–10"` 3-blade prop or apply mild `VESC` field weakening so pitch speed reaches `12–14 kn`).*
+
+### D. Drive-by-Wire Electric Steering & Active Pitch/Lift-Off Trim
+1. **Proportional Electric Steering (`±35°`):** Mount a **`12 V` IP66 waterproof linear actuator** (`100–150 mm` stroke, `500–750 N`, `35–45 mm/s`, built-in potentiometer feedback, `~$65`) between the transom bracket and a `100 mm` steering arm on the `M2200` column, driven by an `ESP32` + `Cytron MD13S` H-bridge from a handheld hall-effect joystick—letting the skipper shift body weight forward for takeoff while steering remotely.
+2. **Active Elevator / Lift-Off Trim (`±5°`):** Mount a second fast **`12 V` waterproof linear actuator (`100 mm`, `1,000 N`)** to tilt the outboard trim bracket or articulate the **aft `700 cm²` stabilizer foil (`±5°`)**: command `+3°` nose-up at `6.5–7.5 kn` to pop cleanly onto the foils, then trim to `0°` for level flight (and optionally close the loop later with a `BNO085` IMU + ultrasonic/ToF water-height sensor on the `ESP32`).
+
+---
+
+## 6. Complete Bill of Materials (`Planing` vs. `Foiling` vs. `Battery-Floor` & `Jet` Conversions)
 
 | Subsystem | **Standard Planing Kit (`15"` Short-Shaft)** | **Foiling Kit (`20"`–`25"` Tall-Shaft + External Hydrofoils)** | **Rigid Battery-Floor + Foiling (`ME1304` or `2× 65161`)** | **Central Jet Motor-Board (`APISQUEEN BP100` `10 kW`)** |
 | :--- | :--- | :--- | :--- | :--- |
