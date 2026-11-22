@@ -47,7 +47,8 @@ flowchart LR
 
 ## Repository Contents
 
-* **[`parallel-hybrid-propulsion-regen-guide.md`](parallel-hybrid-propulsion-regen-guide.md)** — Complete engineering guide covering the 4-mode dual-clutch architecture, `10 ft` (`48 V` `ME1304` dinghy), `30+ ft` (`48 V`), and `40+ ft` (`96 V`) vessel sizing, first-principles comparison of axial-flux SPM (`ME1304`) vs. radial-flux IPM (`ME1616`), `Yanmar 4JH4-AE` (`3,000 RPM`) reduction-ratio and `2,000–2,200 RPM` charging tables, **pushing force (`lbf` / `kgf` / `N`) vs. electrical energy consumption (`kW` / `Wh/nm`) curves**, hydro-regeneration propeller trade-offs, `ABYC E-30 / ISO 16315:2026` floating-bus safety, and BOM/cost breakdowns.
+* **[`parallel-hybrid-propulsion-regen-guide.md`](parallel-hybrid-propulsion-regen-guide.md)** — Complete engineering guide for **`30+ ft` (`48 V`)** and **`40+ ft` (`96 V`)** shaft-drive sailboats covering the 4-mode dual-clutch architecture, axial-flux SPM (`ME1304`) vs. radial-flux IPM (`ME1616`), `Yanmar 4JH4-AE` (`3,000 RPM`) reduction-ratio and diesel fuel-burn vs. generation charts, pushing-force vs. energy curves (including the `2.0 kW` solar-direct benchmark), hydro-regeneration propellers, `ABYC E-30 / ISO 16315:2026` floating-bus safety, and BOMs.
+* **[`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md)** — Standalone guide for the **`48 V` `10 ft` inflatable catamaran tender (`True Kit Navigator 300 / Discovery 330`)** powered by `1 × Motenergy ME1304` (`15"` short-shaft planing + `Kort 19A` yacht-tugboat mode + `20"`–`25"` tall-shaft outboard with externally mounted flip-up hydrofoils).
 
 ---
 
