@@ -72,15 +72,10 @@ xychart-beta
 Because a soft inflatable catamaran cannot absorb concentrated hydrofoil bending moments through glued PVC/Valmex seams alone, the hydrofoil set mounts to a **rigid, quick-detach external `6061-T6` aluminum / carbon exoskeleton**:
 
 ```mermaid
-flowchart TD
-    Saddle["1. Forward Athwartships Saddle Beam (6061-T6 / Carbon Box Beam Clamped to Gunwale Tracks + Contoured Tube Saddles)"]
-    Spine["2. Twin Longitudinal Torque Tie-Bars (Connect Forward Saddle Beam Directly to Rigid Transom Plate)"]
-    FwdFoil["3. External Flip-Up Forward Main Foils (68% Lift, 1,600 cm² Total Area, Pivots 180° Up Outside Tubes for Beaching)"]
-    AftFoil["4. Tall-Shaft (20–25 in) Outboard Cavitation-Plate Stabilizer T-Foil (32% Lift, 650 cm² Area, Controls Pitch Trim)"]
-
-    Saddle --> Spine
-    Saddle --> FwdFoil
-    Spine --> AftFoil
+flowchart LR
+    Saddle["1. Forward Saddle Beam (Clamped to Gunwale Tracks)"] --> FwdFoil["3. Flip-Up Main Foils (68% Lift, 1,600 cm²)"]
+    Saddle --> Spine["2. Twin Longitudinal Torque Tie-Bars"]
+    Spine --> AftFoil["4. Tall-Shaft Aft Stabilizer T-Foil (32% Lift, 650 cm²)"]
 ```
 
 * **Forward Main Foil Options (`68%` of Weight, Positioned `100–150 mm` Ahead of Loaded `LCG`):**
@@ -129,14 +124,10 @@ Beyond a transom outboard with a portable bow battery box, an inflatable tunnel 
 ### B. Comparing Three Integrated Custom-Battery & Hull Concepts
 
 ```mermaid
-flowchart TD
-    A["Option A: Twin Torpedo Battery Floats (180mm x 1.8m) + Expanding Foils + Tailcone Pods"]
-    B["Option B: Central Under-Tunnel Jet Motor-Board Cassette (BP100 10kW Jet + Flat 72V Pack)"]
-    C["Option C: Rigid Composite 'Battery-Floor' Replacing Inflatable Bottom (Dry Skateboard Chassis)"]
-
-    A --> A1["Miniature Foiling SWATH; passive seawater cooling; requires submarine-grade IP68 seals"]
-    B --> B1["2-in-1 detachable jet-surfboard & 3-in-draft tender; blocks air tunnel; cannot foil"]
-    C --> C1["Preserves cat tunnel; dry above-waterline 5.4-8.1 kWh pack; rigid RIB mount for ANY foil or drive"]
+flowchart LR
+    A["Option A: Twin Torpedo Floats (180 mm x 1.8 m)"] --> A1["Foiling SWATH + water-cooled pack (needs IP68 seals)"]
+    B["Option B: Central Jet Board (BP100 10 kW)"] --> B1["Detachable jet-surfboard & 3 in draft (blocks tunnel, no foiling)"]
+    C["Option C: Rigid Battery-Floor (60 mm Composite)"] --> C1["Dry 5.4-8.1 kWh RIB chassis (keeps tunnel, best foil mount)"]
 ```
 
 #### Option A: Twin Torpedo-Shaped External Battery Floats with Expanding / Retractable Foils
