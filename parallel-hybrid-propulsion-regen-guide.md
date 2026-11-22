@@ -245,6 +245,15 @@ Step-by-step **Pushing Force vs. Electrical Energy Consumption** from harbor cre
   * **`25 kn` headwind + `1 m` chop:** `~240–310 lbf` (`110–140 kgf`) combined wind + wave drag (easily sustained continuously by **`1 × ME1616` at `2.5:1` or `3.0:1`**).
   * **`35 kn` gale on the nose:** `~480–600 lbf` (`220–270 kgf`) combined drag (sustained continuously by **`2 × ME1616`** or the **`54 HP Yanmar 4JH4-AE`**).
 
+#### `2.0 kW` "Solar-Direct" Low-Power Motoring Benchmark (`40+ ft` `Beneteau 40` Class)
+At **`2.0 kW` battery DC draw** (`~1.74 kW` shaft power, `~19.5 A` @ `102.4 V`, `~110–120 lbf` thrust), a `40-ft` displacement hull operates in the zero-wave-drag skin-friction regime ($Fn \approx 0.20$), matching the midday output of a `1.5–2.2 kW` deck/bimini solar array (e.g., `HelioStrake`) for **near-unlimited daytime solar motoring** across dead calms without glazing the `54 HP` diesel:
+
+| Conditions (`2.0 kW` Battery DC Draw) | Expected Boat Speed | Energy Efficiency | Endurance & Range (`28.6 kWh` Pack) |
+| :--- | :---: | :---: | :---: |
+| **Flat calm, clean bottom, light ship** | **`4.2 – 4.5 knots`** | `~445 – 475 Wh/nm` | `14.3 hrs` (**`60 – 64 nm`**) |
+| **Typical cruising trim** *(loaded gear, `8–10 kn` breeze / ripple)* | **`3.6 – 4.0 knots`** | `~500 – 555 Wh/nm` | `14.3 hrs` (**`51 – 57 nm`**) |
+| **`15 kn` headwind + `0.5 m` chop** *(rig windage eats `~85 lbf`)* | **`2.5 – 3.0 knots`** | `~665 – 800 Wh/nm` | `14.3 hrs` (**`36 – 43 nm`**) |
+
 ---
 
 ### D. Tier 1 (`30–36 ft` `Hunter 326 / 35` Class, `8,300–12,500 lb`, `15"` Prop, `48 V` / `51.2 V` Nominal, `14.3 kWh` Pack)
