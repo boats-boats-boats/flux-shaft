@@ -193,9 +193,9 @@ Modeled on the `Yanmar 4JH4-AE` BSFC curve (`~216–245 g/kWh`, diesel density `
 
 ```mermaid
 xychart-beta
-    title "Yanmar 4JH4-AE Underway Fuel Burn (L/hr) vs. Max Continuous DC Generation (kW)"
-    x-axis "Engine Speed (RPM)" [1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000]
-    y-axis "Fuel Burn (L/hr) / Electrical Gen (kW DC)" 0 --> 12
+    title "Underway Fuel Burn (L/h) vs Max DC Gen (kW)"
+    x-axis "RPM" [1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000]
+    y-axis "L/h or kW DC" 0 --> 12
     bar [8.5, 9.7, 10.9, 10.5, 9.2, 7.3, 4.6, 1.1, 0.0]
     line [1.34, 1.88, 2.55, 3.39, 4.40, 5.63, 7.09, 8.80, 11.08]
     line [3.58, 4.45, 5.47, 6.23, 6.92, 7.64, 8.38, 9.14, 11.08]
@@ -218,9 +218,9 @@ xychart-beta
 
 ```mermaid
 xychart-beta
-    title "Anchor Genset Mode 1 (Prop Stopped): Max DC Generation (kW) vs. Diesel Fuel Burn (L/hr)"
-    x-axis "Engine Speed (RPM)" [1000, 1200, 1400, 1600, 1800, 2000]
-    y-axis "Electrical Gen (kW DC) / Fuel Burn (L/hr)" 0 --> 13
+    title "Anchor Fuel Burn (L/h) vs Max DC Gen (kW)"
+    x-axis "RPM" [1000, 1200, 1400, 1600, 1800, 2000]
+    y-axis "L/h or kW DC" 0 --> 13
     bar [6.1, 7.3, 8.5, 9.7, 10.9, 12.1]
     line [0.29, 0.36, 0.43, 0.51, 0.59, 0.67]
     line [1.87, 2.27, 2.67, 3.08, 3.50, 3.94]

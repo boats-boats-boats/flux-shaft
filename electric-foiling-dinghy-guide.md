@@ -53,9 +53,9 @@ Planing at `15.5 knots` on the inflatable sponsons draws **`7.91 kW` (`510 Wh/nm
 
 ```mermaid
 xychart-beta
-    title "True Kit 10 ft + ME1304 @ 48V: Planing vs. Foiling Battery Power Draw (kW DC)"
-    x-axis "Boat Speed (knots)" [3.0, 6.5, 10.0, 12.5, 15.5, 18.5]
-    y-axis "Battery Power Consumption (kW DC)" 0 --> 16
+    title "Planing vs Foiling Power Draw (kW DC)"
+    x-axis "Speed (kn)" [3.0, 6.5, 10.0, 12.5, 15.5, 18.5]
+    y-axis "Power (kW DC)" 0 --> 16
     line [0.26, 1.69, 3.72, 5.10, 7.91, 14.80]
     line [0.33, 1.86, 3.66, 1.92, 2.62, 3.84]
 ```
