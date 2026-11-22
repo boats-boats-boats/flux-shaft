@@ -186,6 +186,59 @@ Consequently, **surplus diesel power peaks between `2,000` and `2,200 RPM`** (`1
 
 * **Rule for `Sevcon` Regen Torque Map:** Program the controller's diesel-generation map to **linearly taper braking torque down above `950 shaft RPM` (`~2,300–2,500 diesel RPM`)**, reaching `0 N·m` at `1,100 shaft RPM` so the generator never lugs the diesel or causes black smoke at full throttle.
 
+#### Diesel Fuel Consumption vs. Electrical Generation Range (`Yanmar 4JH4-AE`, `1 × ME1616` @ `3.0:1`, `2.36` Gear)
+Modeled on the `Yanmar 4JH4-AE` BSFC curve (`~216–245 g/kWh`, diesel density `0.84 kg/L` = `3.18 kg/US gal`, `88.3%` shaft-to-DC charging efficiency). Adding generator load at light-to-moderate cruising RPM shifts the engine out of its inefficient low-load region (`242–280 g/kWh`) right into its **`216–218 g/kWh` peak thermal-efficiency island**:
+
+##### 1. Mode 3 — Underway Motoring + Excess Generation (`1,400 – 3,000 RPM`)
+
+```mermaid
+xychart-beta
+    title "Yanmar 4JH4-AE Underway Fuel Burn (L/hr) vs. Max Continuous DC Generation (kW)"
+    x-axis "Engine Speed (RPM)" [1400, 1600, 1800, 2000, 2200, 2400, 2600, 2800, 3000]
+    y-axis "Fuel Burn (L/hr) / Electrical Gen (kW DC)" 0 --> 12
+    bar [8.5, 9.7, 10.9, 10.5, 9.2, 7.3, 4.6, 1.1, 0.0]
+    line [1.34, 1.88, 2.55, 3.39, 4.40, 5.63, 7.09, 8.80, 11.08]
+    line [3.58, 4.45, 5.47, 6.23, 6.92, 7.64, 8.38, 9.14, 11.08]
+```
+*(Bars = Max Continuous Electrical Generation `kW DC`; Lower Line = Prop-Only Fuel Burn `L/hr`; Upper Line = Total Fuel Burn with Max Charging `L/hr`)*
+
+| Engine RPM | Prop Load ($P_{\text{prop}}$) | **Prop-Only Fuel Burn (`0 kW` Gen)** | **Selectable DC Gen Range (`1 × ME1616`)** | **Total Fuel Burn @ Max Gen** | **Extra Fuel for Gen (`+L/hr`)** | **Marginal Yield (`L/kWh` & `kWh / US gal`)** |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **`1,400 RPM`** | `3.9 kW` | `1.34 L/hr` (`0.35 gph`) | **`0 – 8.5 kW DC`** | `3.58 L/hr` (`0.95 gph`) | `+2.24 L/hr` | **`0.26 L/kWh` (`14.3 kWh/gal`)** |
+| **`1,600 RPM`** | `5.8 kW` | `1.88 L/hr` (`0.50 gph`) | **`0 – 9.7 kW DC`** | `4.45 L/hr` (`1.18 gph`) | `+2.58 L/hr` | **`0.27 L/kWh` (`14.2 kWh/gal`)** |
+| **`1,800 RPM`** | `8.3 kW` | `2.55 L/hr` (`0.67 gph`) | **`0 – 10.9 kW DC`** *(Peak Gen!)* | `5.47 L/hr` (`1.44 gph`) | `+2.92 L/hr` | **`0.27 L/kWh` (`14.1 kWh/gal`)** |
+| **`2,000 RPM`** | `11.4 kW` | `3.39 L/hr` (`0.89 gph`) | **`0 – 10.5 kW DC`** *(Golden Zone)* | `6.23 L/hr` (`1.64 gph`) | `+2.84 L/hr` | **`0.27 L/kWh` (`14.0 kWh/gal`)** |
+| **`2,200 RPM`** | `15.2 kW` | `4.40 L/hr` (`1.16 gph`) | **`0 – 9.2 kW DC`** | `6.92 L/hr` (`1.83 gph`) | `+2.52 L/hr` | **`0.27 L/kWh` (`13.8 kWh/gal`)** |
+| **`2,400 RPM`** | `19.7 kW` | `5.63 L/hr` (`1.49 gph`) | **`0 – 7.3 kW DC`** | `7.64 L/hr` (`2.02 gph`) | `+2.01 L/hr` | **`0.28 L/kWh` (`13.7 kWh/gal`)** |
+| **`2,600 RPM`** | `25.1 kW` | `7.09 L/hr` (`1.87 gph`) | **`0 – 4.6 kW DC`** | `8.38 L/hr` (`2.21 gph`) | `+1.29 L/hr` | **`0.28 L/kWh` (`13.4 kWh/gal`)** |
+| **`2,800 RPM`** | `31.3 kW` | `8.80 L/hr` (`2.33 gph`) | **`0 – 1.1 kW DC`** | `9.14 L/hr` (`2.42 gph`) | `+0.34 L/hr` | `0.30 L/kWh` (`12.7 kWh/gal`) |
+| **`3,000 RPM`** | `38.5 kW` | `11.08 L/hr` (`2.93 gph`) | **`0.0 kW DC`** *(Prop @ 100%)* | `11.08 L/hr` (`2.93 gph`) | `0.00 L/hr` | — |
+
+##### 2. Mode 1 — Stationary Anchor / Idle Genset (`Clutch 2` Open, Prop Stopped, `1,000 – 2,000 RPM`)
+
+```mermaid
+xychart-beta
+    title "Anchor Genset Mode 1 (Prop Stopped): Max DC Generation (kW) vs. Diesel Fuel Burn (L/hr)"
+    x-axis "Engine Speed (RPM)" [1000, 1200, 1400, 1600, 1800, 2000]
+    y-axis "Electrical Gen (kW DC) / Fuel Burn (L/hr)" 0 --> 13
+    bar [6.1, 7.3, 8.5, 9.7, 10.9, 12.1]
+    line [0.29, 0.36, 0.43, 0.51, 0.59, 0.67]
+    line [1.87, 2.27, 2.67, 3.08, 3.50, 3.94]
+```
+*(Bars = Max Continuous Electrical Generation `kW DC`; Lower Line = Unloaded Idle Burn `L/hr`; Upper Line = Fuel Burn at Max Continuous Charging `L/hr`)*
+
+| Anchor RPM | `ME1616` RPM (`3.0:1` / `2.36` Gear) | Unloaded Idle Burn (`0 kW`) | **Selectable DC Gen Range (`1 × ME1616`)** | Diesel Torque Load @ Max Gen | **Fuel Burn @ Max Gen (`L/hr` & `gph`)** | **Total Efficiency (`L/kWh` & `kWh / US gal`)** |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **`1,000 RPM`** | `1,271 RPM` | `0.29 L/hr` | **`0 – 6.1 kW DC`** (`59 A`) | `54%` | `1.87 L/hr` (`0.50 gph`) | **`0.31 L/kWh` (`12.2 kWh/gal`)** |
+| **`1,200 RPM`** *(Quiet Sweet Spot)* | `1,525 RPM` | `0.36 L/hr` | **`0 – 7.3 kW DC`** (`70 A`) | `54%` | `2.27 L/hr` (`0.60 gph`) | **`0.31 L/kWh` (`12.1 kWh/gal`)** |
+| **`1,400 RPM`** | `1,780 RPM` | `0.43 L/hr` | **`0 – 8.5 kW DC`** (`82 A`) | `54%` | `2.67 L/hr` (`0.71 gph`) | **`0.31 L/kWh` (`12.0 kWh/gal`)** |
+| **`1,600 RPM`** *(Fast Charge Sweet Spot)* | `2,034 RPM` | `0.51 L/hr` | **`0 – 9.7 kW DC`** (`93 A`) | `54%` | `3.08 L/hr` (`0.81 gph`) | **`0.32 L/kWh` (`11.9 kWh/gal`)** |
+| **`1,800 RPM`** | `2,288 RPM` | `0.59 L/hr` | **`0 – 10.9 kW DC`** (`105 A`) | `54%` | `3.50 L/hr` (`0.93 gph`) | **`0.32 L/kWh` (`11.8 kWh/gal`)** |
+| **`2,000 RPM`** | `2,542 RPM` | `0.67 L/hr` | **`0 – 12.1 kW DC`** (`116 A`) | `54%` | `3.94 L/hr` (`1.04 gph`) | **`0.33 L/kWh` (`11.6 kWh/gal`)** |
+
+* **Why This Beats a Dedicated Marine Generator:** A typical standalone `5–8 kW` marine diesel generator (`3,600 RPM` or `1,800 RPM` AC genset + AC-to-DC rectifier losses) nets **`0.40–0.50 L/kWh` (`7.5–9.5 kWh/gal`)**. Running `FluxShaft` in **Anchor Mode 1** at `1,200–1,600 RPM` nets **`11.9–12.1 kWh/gal` (`+35%` to `+50%` more electricity per gallon)**—and harvesting excess power while cruising in **Mode 3** (`1,600–2,000 RPM`) nets **`14.0–14.2 kWh` per extra gallon** because the engine's internal friction is already paid by propulsion!
+* *(Note: With **`2 × ME1616`** in Anchor Mode 1 at `1,600 RPM`, the `4JH4-AE` can be loaded up to `~85%` rated torque to deliver **`~15.0 kW DC`** at **`~4.5 L/hr` (`1.19 gph`, `12.6 kWh/gal`)**, refilling a `28.6 kWh` bank from `20%` to `80%` in just **`~70 minutes`**!)*
+
 ---
 
 ### C. Hunter 326 / Hunter 35 (`48 V` Tier — `18–28 HP` Yanmar @ `3,600 RPM`)
