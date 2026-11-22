@@ -3,9 +3,7 @@
 ## 1. Project Overview
 `flux-shaft` (**FluxShaft**) is an R&D and marine drivetrain engineering repository for **4-mode parallel-hybrid electric propulsion, stationary & underway diesel generation, and under-sail hydro-regeneration** on **`30+ ft` (`48 V`, e.g., Hunter 326 / Hunter 35)** and **`40+ ft` (`96 V`, e.g., 2009 Beneteau Oceanis 40)** shaft-drive sailboats.
 
-Primary reference documents:
-* [`parallel-hybrid-propulsion-regen-guide.md`](parallel-hybrid-propulsion-regen-guide.md) — `30+ ft` (`48 V`) and `40+ ft` (`96 V`) parallel-hybrid shaft-drive sailboats.
-* [`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md) — `48 V` `10 ft` inflatable catamaran tender (`True Kit` + `ME1304`, `Kort 19A` tugboat mode, and tall-shaft + external hydrofoil set).
+Primary reference document: [`parallel-hybrid-propulsion-regen-guide.md`](parallel-hybrid-propulsion-regen-guide.md). *(Companion electric/foiling dinghy project lives in [`foil-skiff`](https://github.com/boats-boats-boats/foil-skiff)).*
 
 ---
 

@@ -34,11 +34,10 @@ flowchart LR
 
 ---
 
-## Reference Vessel Tiers (From `10 ft` Catamaran Tender to `40+ ft` Offshore Cruiser)
+## Reference Vessel Tiers (`30+ ft` `48 V` & `40+ ft` `96 V` Shaft-Drive Sailboats)
 
 | Tier | Reference Vessel(s) | Voltage & Standard | Motor & Controller Spec | Cont. / Peak Shaft Power & Pushing Force | Complete DIY Cost (incl. `LiFePO4` Bank) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Tier 0 (`10 ft` Tender)** | `True Kit Navigator 300 / Discovery 330` (`31–36 kg` inflatable catamaran) | **`48 V DC`** (`16S 100 Ah` `5.12 kWh` portable box, **ABYC E-11**) | `1 × ME1304` (axial-flux, `15.9 kg`) + `Sevcon Gen4 Size 4` on `15"` or **Tall `20"–25"` leg + External Hydrofoils** | **Planing:** `15.5 kn` @ `7.9 kW` (`10 nm` range)<br>**Foiling:** **`15.5 kn` @ `2.6 kW` (`30.3 nm` range, `46 lbf` drag)** / `22.5 kn` max cont. | **`~$2,650`** *(Planing)*<br>**`~$3,750`** *(w/ Tall Leg + Hydrofoils)* |
 | **Tier 1 (`30+ ft` Cruiser)** | `Hunter 326` (`8,300 lb`) / `Hunter 35` (`12,500 lb`) | **`48 V DC`** (`16S 280 Ah` `14.3 kWh`, inside **ABYC E-11 `<60 V`**) | `1 × ME1616` + `1 × Sevcon Gen4 Size 6 (48V)` @ `2.2:1–2.5:1` | **`10.2 kW` cont.** (`365 lbf` cruise / `460 lbf` bollard) / **`21 kW` peak** (`620+ lbf`) | **`~$5,890`** *(incl. `14.3 kWh` pack)* |
 | **Tier 2A (`40+ ft` Simplicity)** | `Beneteau Oceanis 40` (`18,210 lb`, `Yanmar 4JH4-AE`) | **`96 V DC`** (`32S 280 Ah` `28.6 kWh`, floating bus + **Bender IMD** per **ABYC E-30 / ISO 16315**) | `1 × ME1616` + `1 × Sevcon Gen4 Size 6 (80/96V)` @ `2.5:1–3.0:1` | **`10.5–13.7 kW` cont.** (`372–447 lbf` cruise / `426–512 lbf` bollard) / **`35–54 kW` peak** (`1,065–1,280 lbf`) | **`~$8,660`** *(incl. `28.6 kWh` pack)* |
 | **Tier 2B (`40+ ft` Full Power)** | `Beneteau Oceanis 40` (`18,210 lb`, `Yanmar 4JH4-AE`) | **`96 V DC`** (`32S 280 Ah` `28.6 kWh`, floating bus + **Bender IMD**) | `2 × ME1616` + `2 × Sevcon Gen4 Size 6 (80/96V)` @ `2.5:1–3.0:1` | **`25.4–38.5 kW` cont.** (`745–888 lbf` cruise / `853–1,017 lbf` bollard = 100% diesel match!) | **`~$12,180`** *(incl. `28.6 kWh` pack)* |
@@ -48,7 +47,7 @@ flowchart LR
 ## Repository Contents
 
 * **[`parallel-hybrid-propulsion-regen-guide.md`](parallel-hybrid-propulsion-regen-guide.md)** — Complete engineering guide for **`30+ ft` (`48 V`)** and **`40+ ft` (`96 V`)** shaft-drive sailboats covering the 4-mode dual-clutch architecture, axial-flux SPM (`ME1304`) vs. radial-flux IPM (`ME1616`), `Yanmar 4JH4-AE` (`3,000 RPM`) reduction-ratio and diesel fuel-burn vs. generation charts, pushing-force vs. energy curves (including the `2.0 kW` solar-direct benchmark), hydro-regeneration propellers, `ABYC E-30 / ISO 16315:2026` floating-bus safety, and BOMs.
-* **[`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md)** — Standalone guide for the **`10 ft` inflatable catamaran tender (`True Kit Navigator 300 / Discovery 330`)** covering `Motenergy ME1304 @ 48 V` (`15"` planing + `Kort 19A` tugboat mode + `20"`–`25"` tall-shaft foiling), `APISQUEEN U30` (`2 kW` / `30 kgf`) ducted thrusters, `Flipsky 65161` pods, `APISQUEEN BP100` `10 kW` pump-jet, twin torpedo SWATH floats, and a rigid composite `EVE LF105` battery-floor chassis.
+* *(For the companion **`48 V` electric & foiling inflatable catamaran tender** project, see [`foil-skiff`](https://github.com/boats-boats-boats/foil-skiff)).*
 
 ---
 

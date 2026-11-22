@@ -321,7 +321,7 @@ With **`1 × Motenergy ME1616`** (or `2 × ME1304`) at `48 V` (`2.2:1` belt rati
 | **6. Stock `18 HP` Diesel WOT Match** | **`7.13 kn`** | **`430 lbf`** (`195 kgf` / `1,913 N`) | **`505 lbf`** (`229 kgf`) | `12.80 kW` | **`14.55 kW`** (`284 A`) | **`2,040 Wh/nm`** | **`1.0 hr` (`7.0 nm`)** |
 | **7. `1× ME1616` `1-Min` Peak Burst** | **`7.3 kn`** | **`620 lbf`** (`281 kgf` / `2,758 N`) | **`710 lbf`** (`322 kgf`) | `21.00 kW` | **`23.86 kW`** (`466 A`) | **`3,269 Wh/nm`** | `1–2 min` burst |
 
-*(For the companion **`48 V` `10 ft` inflatable catamaran dinghy** conversion using `1 × Motenergy ME1304`, optional `Kort 19A` tugboat nozzle, and optional `20"`–`25"` tall-shaft outboard + external hydrofoils, see **[`electric-foiling-dinghy-guide.md`](electric-foiling-dinghy-guide.md)**).*
+*(For the companion **`48 V` `10 ft` electric & foiling inflatable catamaran dinghy** project, see **[`foil-skiff`](https://github.com/boats-boats-boats/foil-skiff)**).*
 
 ---
 
